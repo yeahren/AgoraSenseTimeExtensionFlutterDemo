@@ -1,0 +1,57 @@
+PODS:
+  - agora_rtc_engine (6.2.6-sp.4264):
+    - AgoraIrisRTC_iOS (= 4.2.6.4-build.1)
+    - AgoraRtcEngine_Special_iOS (= 4.2.6.4)
+    - Flutter
+  - AgoraIrisRTC_iOS (4.2.6.4-build.1)
+  - AgoraRtcEngine_Special_iOS (4.2.6.4)
+  - Extensions (0.1.0)
+  - Flutter (1.0.0)
+  - iris_method_channel (0.0.1):
+    - Flutter
+  - path_provider_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - permission_handler_apple (9.1.1):
+    - Flutter
+
+DEPENDENCIES:
+  - agora_rtc_engine (from `.symlinks/plugins/agora_rtc_engine/ios`)
+  - Extensions (from `./`)
+  - Flutter (from `Flutter`)
+  - iris_method_channel (from `.symlinks/plugins/iris_method_channel/ios`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
+  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
+
+SPEC REPOS:
+  trunk:
+    - AgoraIrisRTC_iOS
+    - AgoraRtcEngine_Special_iOS
+
+EXTERNAL SOURCES:
+  agora_rtc_engine:
+    :path: ".symlinks/plugins/agora_rtc_engine/ios"
+  Extensions:
+    :path: "./"
+  Flutter:
+    :path: Flutter
+  iris_method_channel:
+    :path: ".symlinks/plugins/iris_method_channel/ios"
+  path_provider_foundation:
+    :path: ".symlinks/plugins/path_provider_foundation/darwin"
+  permission_handler_apple:
+    :path: ".symlinks/plugins/permission_handler_apple/ios"
+
+SPEC CHECKSUMS:
+  agora_rtc_engine: 08141e7ad94ac4d8d7a8567c38d3553604d7b2d0
+  AgoraIrisRTC_iOS: 39cdbbdda25febaa3e909ffaca9e629762f571e1
+  AgoraRtcEngine_Special_iOS: 90cb3193ac49640765891e14207cc96123b8c08c
+  Extensions: fcb30b01f6ce502678ef4e96ae4543527d0ad24f
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  iris_method_channel: 0617c689164d8154c020c50f63ca79f92b8a7b9d
+  path_provider_foundation: 3784922295ac71e43754bd15e0653ccfd36a147c
+  permission_handler_apple: e76247795d700c14ea09e3a2d8855d41ee80a2e6
+
+PODFILE CHECKSUM: 70cc9acda3ebc9c82a578ce361c88b37b011fdd7
+
+COCOAPODS: 1.14.3
