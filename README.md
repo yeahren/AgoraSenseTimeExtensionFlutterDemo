@@ -137,13 +137,13 @@ await _setExtensionProperty("st_mobile_effect_set_beauty_strength", {
 
 调用例子如下：（babypink + 1.0效果）
 
-```json
+```dart
 await _setExtensionProperty("st_mobile_effect_set_beauty", {
       "param": STEffectBeautyType.EFFECT_BEAUTY_FILTER.type_value,
       "path": await _copyAsset("Resource/filter_portrait/filter_style_babypink.model"),
     });
 
-    await _setExtensionProperty("st_mobile_effect_set_beauty_strength", {
+await _setExtensionProperty("st_mobile_effect_set_beauty_strength", {
       "param": STEffectBeautyType.EFFECT_BEAUTY_PLASTIC_CHIN_LENGTH.type_value,
       "val": 1.0
     });
