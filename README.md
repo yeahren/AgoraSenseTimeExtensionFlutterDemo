@@ -1,6 +1,6 @@
 ### 【概述】
 
-本文档描述了【AgoraSenseTime - 商汤插件】Flutter中的使用
+本文档描述了【AgoraSenseTimeExtension - 商汤插件】Flutter中的使用
 
 author: peter.liu@ai4geeks.com
 
