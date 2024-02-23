@@ -57,6 +57,7 @@ enum STEffectBeautyType {
   EFFECT_BEAUTY_PLASTIC_WHITE_TEETH(317, .20, [0, 1.0]),             // 白牙
   EFFECT_BEAUTY_PLASTIC_REMOVE_NASOLABIAL_FOLDS(316, .60, [0, 1.0]), // 祛法令纹
 
+  // 3. makeup
   EFFECT_BEAUTY_MAKEUP_HAIR_DYE(401, .0, [.0, .0]),   // 染发
   EFFECT_BEAUTY_MAKEUP_LIP(402, .0, [.0, .0]),        // 口红
   EFFECT_BEAUTY_MAKEUP_CHEEK(403, .0, [.0, .0]),      // 腮红
@@ -244,8 +245,11 @@ class _MyHomePageState extends State<MyHomePage> {
       "config": STEffectBeautyType.ST_MOBILE_FACE_DETECT_FULL.type_value,
     });
 
-    await _setExtensionProperty("st_mobile_effect_create_handle", {
+    await _setExtensionProperty("st_mobile_human_action_add_sub_model", {
+      "model_path": await _copyAsset("Resource/models/M_SenseME_Segment_Hair_p_4.4.0.model"),
     });
+
+    await _setExtensionProperty("st_mobile_effect_create_handle", {});
 
   }
 
@@ -328,11 +332,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> _makeupDemo() async {
-    // await _setExtensionProperty("st_mobile_human_action_create", {
-    //   "model_path": await _copyAsset("Resource/models/M_SenseME_Segment_Hair_p_4.4.0.model"),
-    //   "config": STEffectBeautyType.ST_MOBILE_SEG_HAIR.type_value | STEffectBeautyType.ST_MOBILE_FACE_DETECT_FULL.type_value,
-    // });
-
     await _setExtensionProperty("st_mobile_effect_set_beauty", {
       "param": STEffectBeautyType.EFFECT_BEAUTY_MAKEUP_HAIR_DYE.type_value,
       "path": await _copyAsset("Resource/red_rBBj0WB89tmAL9GPAADD1Nch9Os329_50202204281925350377.zip")
@@ -340,7 +339,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     await _setExtensionProperty("st_mobile_effect_set_beauty_strength", {
       "param": STEffectBeautyType.EFFECT_BEAUTY_MAKEUP_HAIR_DYE.type_value,
-      "val": 1.0
+      "val": 0.8
     });
   }
 
