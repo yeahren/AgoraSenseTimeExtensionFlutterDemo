@@ -51,21 +51,21 @@ enum STEffectBeautyType {
   EFFECT_BEAUTY_PLASTIC_PROFILE_RHINOPLASTY(308, 0, [0, 1.0]), // 侧脸隆鼻
 
   // 2.4 Features
-  EFFECT_BEAUTY_PLASTIC_MOUTH_SIZE(309, 0, [-1, 1]),                 // 嘴型
-  EFFECT_BEAUTY_PLASTIC_PHILTRUM_LENGTH(310, .20, [-1, 1]),          // 缩人中
+  EFFECT_BEAUTY_PLASTIC_MOUTH_SIZE(309, 0, [-1, 1]), // 嘴型
+  EFFECT_BEAUTY_PLASTIC_PHILTRUM_LENGTH(310, .20, [-1, 1]), // 缩人中
   //TYPE_WZH_3D_NEW_2(80127, .0), 3D ignore
-  EFFECT_BEAUTY_PLASTIC_WHITE_TEETH(317, .20, [0, 1.0]),             // 白牙
+  EFFECT_BEAUTY_PLASTIC_WHITE_TEETH(317, .20, [0, 1.0]), // 白牙
   EFFECT_BEAUTY_PLASTIC_REMOVE_NASOLABIAL_FOLDS(316, .60, [0, 1.0]), // 祛法令纹
 
   // 3. makeup
-  EFFECT_BEAUTY_MAKEUP_HAIR_DYE(401, .0, [.0, .0]),   // 染发
-  EFFECT_BEAUTY_MAKEUP_LIP(402, .0, [.0, .0]),        // 口红
-  EFFECT_BEAUTY_MAKEUP_CHEEK(403, .0, [.0, .0]),      // 腮红
-  EFFECT_BEAUTY_MAKEUP_NOSE(404, .0, [.0, .0]),       // 修容
-  EFFECT_BEAUTY_MAKEUP_EYE_BROW(405, .0, [.0, .0]),   // 眉毛
+  EFFECT_BEAUTY_MAKEUP_HAIR_DYE(401, .0, [.0, .0]), // 染发
+  EFFECT_BEAUTY_MAKEUP_LIP(402, .0, [.0, .0]), // 口红
+  EFFECT_BEAUTY_MAKEUP_CHEEK(403, .0, [.0, .0]), // 腮红
+  EFFECT_BEAUTY_MAKEUP_NOSE(404, .0, [.0, .0]), // 修容
+  EFFECT_BEAUTY_MAKEUP_EYE_BROW(405, .0, [.0, .0]), // 眉毛
   EFFECT_BEAUTY_MAKEUP_EYE_SHADOW(406, .0, [.0, .0]), // 眼影
-  EFFECT_BEAUTY_MAKEUP_EYE_LINE(407, .0, [.0, .0]),   // 眼线
-  EFFECT_BEAUTY_MAKEUP_EYE_BALL(409, .0, [.0, .0]),   // 美瞳
+  EFFECT_BEAUTY_MAKEUP_EYE_LINE(407, .0, [.0, .0]), // 眼线
+  EFFECT_BEAUTY_MAKEUP_EYE_BALL(409, .0, [.0, .0]), // 美瞳
 
   ;
 
@@ -75,7 +75,6 @@ enum STEffectBeautyType {
 
   const STEffectBeautyType(this.type_value, this.default_val, this.range);
 }
-
 
 void main() {
   runApp(const MyApp());
@@ -125,19 +124,22 @@ class _MyHomePageState extends State<MyHomePage> {
   final RtcEngine _rtcEngine = createAgoraRtcEngine();
   final RtcEngineEventHandler _rtcEngineEventHandler = RtcEngineEventHandler(
     onExtensionStarted: (String provider, String extension) {
-      debugPrint('[onExtensionStarted] provider: $provider, extension: $extension');
+      debugPrint(
+          '[onExtensionStarted] provider: $provider, extension: $extension');
     },
-
     onExtensionStopped: (String provider, String extension) {
-      debugPrint('[onExtensionStopped] provider: $provider, extension: $extension');
+      debugPrint(
+          '[onExtensionStopped] provider: $provider, extension: $extension');
     },
-
-    onExtensionError: (String provider, String extension, int error, String message) {
-      debugPrint('[onExtensionError] provider: $provider, extension: $extension');
+    onExtensionError:
+        (String provider, String extension, int error, String message) {
+      debugPrint(
+          '[onExtensionError] provider: $provider, extension: $extension');
     },
-
-    onExtensionEvent: (String provider, String extension, String key, String value) {
-      debugPrint('[onExtensionEvent] provider: $provider, extension: $extension, key: $key, value: $value');
+    onExtensionEvent:
+        (String provider, String extension, String key, String value) {
+      debugPrint(
+          '[onExtensionEvent] provider: $provider, extension: $extension, key: $key, value: $value');
     },
   );
 
@@ -157,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<String> _copyAsset(String assetPath) async {
     ByteData data = await rootBundle.load(assetPath);
     List<int> bytes =
-    data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+        data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
 
     Directory appDocDir = await getApplicationDocumentsDirectory();
 
@@ -198,7 +200,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
     await _initExtension();
 
-
     await _rtcEngine.enableVideo();
     await _rtcEngine.startPreview();
 
@@ -221,7 +222,6 @@ class _MyHomePageState extends State<MyHomePage> {
     await _makeupDemo();
   }
 
-
   Future<void> _initExtension() async {
     await _rtcEngine.enableExtension(
         provider: "SenseTime", extension: "Effect", enable: true);
@@ -237,20 +237,22 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> _checklicense() async {
     await _setExtensionProperty("st_mobile_check_activecode", {
-      "license_path": await _copyAsset("Resource/license/SenseMARS_Effects.lic"),
+      "license_path":
+          await _copyAsset("Resource/license/SenseMARS_Effects.lic"),
     });
 
     await _setExtensionProperty("st_mobile_human_action_create", {
-      "model_path": await _copyAsset("Resource/models/M_SenseME_Face_Video_Template_p_4.0.0.model"),
+      "model_path": await _copyAsset(
+          "Resource/models/M_SenseME_Face_Video_Template_p_4.0.0.model"),
       "config": STEffectBeautyType.ST_MOBILE_FACE_DETECT_FULL.type_value,
     });
 
     await _setExtensionProperty("st_mobile_human_action_add_sub_model", {
-      "model_path": await _copyAsset("Resource/models/M_SenseME_Segment_Hair_p_4.4.0.model"),
+      "model_path": await _copyAsset(
+          "Resource/models/M_SenseME_Segment_Hair_p_4.4.0.model"),
     });
 
     await _setExtensionProperty("st_mobile_effect_create_handle", {});
-
   }
 
   Future<void> _baseBeautyDemo() async {
@@ -274,11 +276,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> _filterBeautyDemo() async {
     await _setExtensionProperty("st_mobile_effect_set_beauty", {
       "param": STEffectBeautyType.EFFECT_BEAUTY_FILTER.type_value,
-      "path": await _copyAsset("Resource/filter_portrait/filter_style_babypink.model"),
+      "path": await _copyAsset(
+          "Resource/filter_portrait/filter_style_babypink.model"),
     });
 
     await _setExtensionProperty("st_mobile_effect_set_beauty_strength", {
-      "param": STEffectBeautyType.EFFECT_BEAUTY_PLASTIC_CHIN_LENGTH.type_value,
+      "param": STEffectBeautyType.EFFECT_BEAUTY_FILTER.type_value,
       "val": 1.0
     });
   }
@@ -328,13 +331,13 @@ class _MyHomePageState extends State<MyHomePage> {
     // //TYPE_WZH_3D_NEW_2(80127, .0), 3D ignore
     // EFFECT_BEAUTY_PLASTIC_WHITE_TEETH(317, .20, [0, 1.0]), // 白牙
     // EFFECT_BEAUTY_PLASTIC_REMOVE_NASOLABIAL_FOLDS(316, .60, [0, 1.0]), // 祛法令纹
-
   }
 
   Future<void> _makeupDemo() async {
     await _setExtensionProperty("st_mobile_effect_set_beauty", {
       "param": STEffectBeautyType.EFFECT_BEAUTY_MAKEUP_HAIR_DYE.type_value,
-      "path": await _copyAsset("Resource/red_rBBj0WB89tmAL9GPAADD1Nch9Os329_50202204281925350377.zip")
+      "path": await _copyAsset(
+          "Resource/red_rBBj0WB89tmAL9GPAADD1Nch9Os329_50202204281925350377.zip")
     });
 
     await _setExtensionProperty("st_mobile_effect_set_beauty_strength", {
@@ -349,9 +352,28 @@ class _MyHomePageState extends State<MyHomePage> {
       children: [
         AgoraVideoView(
             controller: VideoViewController(
-              rtcEngine: _rtcEngine,
-              canvas: const VideoCanvas(uid: 0),
-            )),
+          rtcEngine: _rtcEngine,
+          canvas: const VideoCanvas(uid: 0),
+        )),
+        Positioned(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ElevatedButton(
+                onPressed: () async {
+                  await _rtcEngine.enableExtension(
+                      provider: "SenseTime",
+                      extension: "Effect",
+                      enable: false);
+                  await _rtcEngine.stopPreview();
+                },
+                child: Text("结束预览",
+                    style: TextStyle(color: Colors.red, fontSize: 14)),
+              )
+            ],
+          ),
+          top: 50,
+        )
       ],
     );
   }
